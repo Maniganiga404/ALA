@@ -1,9 +1,9 @@
 from vec import Vec
 
 
-# -----------------------------------
+
 # Vector creation and length
-# -----------------------------------
+
 
 v = Vec([1, 2, 3])
 
@@ -13,9 +13,9 @@ assert len(v) == 3
 print("Vector creation and length tests passed!")
 
 
-# -----------------------------------
+
 # Addition
-# -----------------------------------
+
 
 v1 = Vec([1, 2, 3])
 v2 = Vec([4, 5, 6])
@@ -29,9 +29,9 @@ assert v3.elements == [5, 7, 9]
 print("Addition test passed!")
 
 
-# -----------------------------------
+
 # Subtraction
-# -----------------------------------
+
 
 v1 = Vec([1, 2, 3])
 v2 = Vec([4, 5, 6])
@@ -45,9 +45,8 @@ assert v3.elements == [-3, -3, -3]
 print("Subtraction test passed!")
 
 
-# -----------------------------------
 # Scalar multiplication
-# -----------------------------------
+
 
 v1 = Vec([1, 2, 3])
 
@@ -60,9 +59,9 @@ assert v3.elements == [2, 4, 6]
 print("Multiplication test passed!")
 
 
-# -----------------------------------
+
 # Negation
-# -----------------------------------
+
 
 v3 = -v1
 
@@ -73,9 +72,9 @@ assert v3.elements == [-1, -2, -3]
 print("Negation test passed!")
 
 
-# -----------------------------------
+
 # Scalar addition
-# -----------------------------------
+
 
 v3 = 5 + v1
 
@@ -86,9 +85,9 @@ assert v3.elements == [6, 7, 8]
 print("Scalar Addition test passed!")
 
 
-# -----------------------------------
+
 # In-place addition
-# -----------------------------------
+
 
 v1 = Vec([1, 2, 3])
 v2 = Vec([4, 5, 6])
@@ -102,9 +101,9 @@ assert v1.elements == [5, 7, 9]
 print("In-place Addition test passed!")
 
 
-# -----------------------------------
+
 # In-place multiplication
-# -----------------------------------
+
 
 v1 = Vec([1, 2, 3])
 
@@ -117,9 +116,9 @@ assert v1.elements == [2, 4, 6]
 print("In-place Multiplication test passed!")
 
 
-# -----------------------------------
+
 # Zeros
-# -----------------------------------
+
 
 v1 = Vec.zeros(5)
 
@@ -132,9 +131,9 @@ assert v1.elements == [
 print("Zeros test passed!")
 
 
-# -----------------------------------
+
 # Ones
-# -----------------------------------
+
 
 v1 = Vec.ones(5)
 
@@ -147,9 +146,9 @@ assert v1.elements == [
 print("Ones test passed!")
 
 
-# -----------------------------------
+
 # Uniform
-# -----------------------------------
+
 
 v = Vec.uniform(5)
 
@@ -161,9 +160,8 @@ assert all(0 <= x <= 1 for x in v.elements)
 print("Uniform test passed!")
 
 
-# -----------------------------------
 # Norm
-# -----------------------------------
+
 
 v = Vec([3, 4])
 
@@ -172,6 +170,54 @@ print("Norm:", v.norm())
 assert v.norm() == 5.0
 
 print("Norm test passed!")
+
+
+#Mean
+
+v = Vec([1, 2, 3, 4, 5])
+
+print("Mean:", v.mean())
+
+assert v.mean() == 3.0
+
+print("Mean test passed!")
+
+
+# Demean
+
+v = Vec([2, 4, 6, 8])
+
+de_meaned = v.demean()
+
+print("Demeaned:", de_meaned)
+
+assert de_meaned.elements == [-3, -1, 1, 3]
+
+assert de_meaned.mean() == 0
+
+assert v.elements == [2, 4, 6, 8]
+
+print("Demean values test passed!")
+
+
+
+# Standard deviation
+
+v = Vec([2, 4, 6, 8])
+
+print("Standard deviation:", v.std())
+
+assert abs(v.std() - 2.236067977) < 1e-5
+
+print("Standard deviation test passed!")
+
+# Standard deviation property
+
+v = Vec([5, 5, 5, 5])
+
+assert v.std() == 0
+
+print("Standard deviation property test passed!")
 
 
 print("\nAll tests passed!")

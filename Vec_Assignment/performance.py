@@ -11,9 +11,8 @@ import numpy as np
 sizes = [2000, 4000, 8000, 16000, 32000, 64000]
 
 
-print("==========================================")
 print("CUSTOM VEC PERFORMANCE")
-print("==========================================")
+    
 
 
 for n in sizes:

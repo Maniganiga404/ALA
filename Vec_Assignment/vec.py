@@ -1,4 +1,5 @@
 import random
+import math
 from typing import Self
 
 
@@ -130,3 +131,28 @@ class Vec:
         return math.sqrt(
             sum(x * x for x in self.elements)
         )
+
+    #mean
+    def mean(self) -> float:
+        if len(self.elements) == 0:
+            raise ValueError("Vector cannot be empty")
+
+        return sum(self.elements) / len(self.elements)
+
+    #demean
+    def demean(self) -> self:
+        if(len(self.elements) == 0):
+            raise ValueError("Vector cannot be empty")
+
+        mean = self.mean()
+
+        return Vec([x - mean for x in self.elements])
+
+    #standard deviation
+    def std(self) -> float:
+        if(len(self.elements) == 0):
+            raise ValueError("vector cannot be empty")
+
+        de_meaned =self.demean()
+
+        return math.sqrt(sum(x * x for x in de_meaned.elements)/len(de_meaned.elements))
